@@ -9,6 +9,9 @@
 
 #include "test/include/main.h"
 
+#include  "include/application.h"
+#include  "include/callback.h"
+
 
 static const struct
 {
@@ -40,20 +43,6 @@ static const char *fragment_shader_text =
     "    gl_FragColor = vec4(color, 1.0);\n"
     "}\n";
 
-static void error_callback(int error, const char *description)
-{
-    fprintf(stderr, "Error: %s\n", description);
-}
-
-static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-        glfwSetWindowShouldClose(window, GLFW_TRUE);
-    } else if(key == GLFW_KEY_0 && action == GLFW_PRESS) {
-        test_main(window);
-    }
-}
-
 int main(void)
 {
 
@@ -61,7 +50,7 @@ int main(void)
     GLuint vertex_buffer, vertex_shader, fragment_shader, program;
     GLint mvp_location, vpos_location, vcol_location;
 
-    glfwSetErrorCallback(error_callback);
+    glfwSetErrorCallback(callback_error);
 
     if (!glfwInit())
         exit(EXIT_FAILURE);
@@ -76,7 +65,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    glfwSetKeyCallback(window, key_callback);
+    glfwSetKeyCallback(window, callback_key);
     glfwMakeContextCurrent(window);
 
     if (gl3wInit())

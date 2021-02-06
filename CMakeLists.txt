@@ -10,7 +10,7 @@ include_directories(vendor/include)
 file(GLOB_RECURSE GRAPHICS_SRC CONFIGURE_DEPENDS "src/*.h" "src/*.c")
 add_executable(graphics ${GRAPHICS_SRC})
 
-add_library(gl3w vendor/src/gl3w.c)
+add_library(gl3w vendor/gl3w/src/gl3w.c)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
