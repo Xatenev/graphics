@@ -1,4 +1,3 @@
-
 #include <GL/gl3w.h>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
@@ -7,6 +6,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+
+#include "test/include/main.h"
+
 
 static const struct
 {
@@ -45,8 +47,11 @@ static void error_callback(int error, const char *description)
 
 static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, GLFW_TRUE);
+    } else if(key == GLFW_KEY_0 && action == GLFW_PRESS) {
+        test_main(window);
+    }
 }
 
 int main(void)
