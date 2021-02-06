@@ -9,7 +9,7 @@ My personal playground for graphics related software development topics.
 
 ## Dependencies
 
-- [cmake](https://cmake.org/)
+- [cmake >= 3.10](https://cmake.org/)
 
 ## Compile
 
